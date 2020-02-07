@@ -487,7 +487,7 @@ static inline void vec3f_cross(const GLfloat* v1, const GLfloat* v2, GLfloat* re
 void glhLookAtf2(const GLfloat* eyePosition3D,
                  const GLfloat* center3D,
                  const GLfloat* upVector3D) {
-
+#if 0
     /* Look-At Matrix */
     static Matrix4x4 MatrixLookAt __attribute__((aligned(32))) = {
         1.0f, 0.0f, 0.0f, 0.0f,
@@ -499,11 +499,11 @@ void glhLookAtf2(const GLfloat* eyePosition3D,
     GLfloat forward[3];
     GLfloat side[3];
     GLfloat up[3];
-	/*
+
     vec3f_sub_normalize(center3D[0], center3D[1], center3D[2],
                         eyePosition3D[0], eyePosition3D[1], eyePosition3D[2],
                         forward[0], forward[1], forward[2]);
-	*/
+
     //Side = forward x up
     vec3f_cross(forward, upVector3D, side);
     vec3f_normalize(side[0], side[1], side[2]);
@@ -545,6 +545,7 @@ void glhLookAtf2(const GLfloat* eyePosition3D,
     multiply_matrix(&trn);
     multiply_matrix(stack_top(MATRIX_STACKS + (GL_MODELVIEW & 0xF)));
     download_matrix(stack_top(MATRIX_STACKS + (GL_MODELVIEW & 0xF)));
+#endif
 }
 
 void gluLookAt(GLfloat eyex, GLfloat eyey, GLfloat eyez, GLfloat centerx,
