@@ -499,11 +499,11 @@ void glhLookAtf2(const GLfloat* eyePosition3D,
     GLfloat forward[3];
     GLfloat side[3];
     GLfloat up[3];
-
+	/*
     vec3f_sub_normalize(center3D[0], center3D[1], center3D[2],
                         eyePosition3D[0], eyePosition3D[1], eyePosition3D[2],
                         forward[0], forward[1], forward[2]);
-
+	*/
     //Side = forward x up
     vec3f_cross(forward, upVector3D, side);
     vec3f_normalize(side[0], side[1], side[2]);
